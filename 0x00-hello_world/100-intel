@@ -1,2 +1,2 @@
 #!/bin/bash
-Answer= gcc -S -masm = intel $CFILE
+Answer= gcc -S -masm= intel $CFILE
