@@ -1,2 +1,2 @@
 #!/bin/bash
-Answer = gcc -E $CFILE -o c
+Answer= gcc -E $CFILE -o c
