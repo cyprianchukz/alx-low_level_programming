@@ -1,0 +1,2 @@
+#!/bin/bash
+Answer= gcc -S -masm = intel $CFILE
