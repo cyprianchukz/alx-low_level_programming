@@ -181,6 +181,11 @@ void print_osabi(unsigned char *e_ident)
  * @e_ident: A pointer to an array containing the ELF ABI version.
  */
 void print_abi(unsigned char *e_ident)
+{
+	printf("  ABI Version:                       %d\n",
+	       e_ident[EI_ABIVERSION]);
+}
+
 /**
  * print_type - Prints the type of an ELF header.
  * @e_type: The ELF type.
@@ -290,7 +295,18 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
-	}	
+	}
+
+	check_elf(header->e_ident);
+	printf("ELF Header:\n");
+	print_magic(header->e_ident);
+	print_class(header->e_ident);
+	print_data(header->e_ident);
+	print_version(header->e_ident);
+	print_osabi(header->e_ident);
+	print_abi(header->e_ident);
+	print_type(header->e_type, header->e_ident);
+	print_entry(header->e_entry, header->e_ident);
 
 	free(header);
 	close_elf(o);
